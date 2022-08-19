@@ -1,0 +1,16 @@
+{
+  "name": "mengajar",
+  "version": "1.0.0",
+  "description": "SP Pemrograman Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Crud",
+    "Mysql",
+    "Nodejs"
+  ],
+  "author": "Mochamad Wiby Erton Firmanda",
+  "license": "ISC"
+}
