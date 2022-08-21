@@ -1,126 +1,126 @@
 const db = require("../models");
-const Jurusan = db.jurusan;
+const Matkul = db.matkul;
 const Op = db.Sequelize.Op;
-// Create and Save a new Jurusan
+// Create and Save a new Matkul
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.kode_jurusan) {
+  if (!req.body.kode_matkul) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
     return;
   }
-  // Create a Jurusan
-  const jurusan = {
-    kode_jurusan: req.body.kode_jurusan,
+  // Create a Matkul
+  const matkul = {
+    kode_matkul: req.body.kode_matkul,
     nama_jurusan: req.body.nama_jurusan,
     jenjang_jurusan: req.body.jenjang_jurusan
   };
-  // Save Jurusan in the database
-  Jurusan.create(jurusan)
+  // Save Matkul in the database
+  Matkul.create(matkul)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Jurusan."
+          err.message || "Some error occurred while creating the Matkul."
       });
     });
 };
-// Retrieve all Jurusan from the database.
+// Retrieve all Matkul from the database.
 exports.findAll = (req, res) => {
-  const kode_jurusan = req.query.kode_jurusan;
-  var condition = kode_jurusan ? { kode_jurusan: { [Op.like]: `%${kode_jurusan}%` } } : null;
-  Jurusan.findAll({ where: condition })
+  const kode_matkul = req.query.kode_matkul;
+  var condition = kode_matkul ? { kode_matkul: { [Op.like]: `%${kode_matkul}%` } } : null;
+  Matkul.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving jurusan."
+          err.message || "Some error occurred while retrieving matkul."
       });
     });
 };
-// Find a single Jurusan with an id
+// Find a single Matkul with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Jurusan.findByPk(id)
+  Matkul.findByPk(id)
     .then(data => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Jurusan with id=${id}.`
+          message: `Cannot find Matkul with id=${id}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Jurusan with id=" + id
+        message: "Error retrieving Matkul with id=" + id
       });
     });
 };
-// Update a Jurusan by the id in the request
+// Update a Matkul by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
-  Jurusan.update(req.body, {
+  Matkul.update(req.body, {
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Jurusan was updated successfully."
+          message: "Matkul was updated successfully."
         });
       } else {
         res.send({
-          message: `Cannot update Jurusan with id=${id}. Maybe Jurusan was not found or req.body is empty!`
+          message: `Cannot update Matkul with id=${id}. Maybe Matkul was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Jurusan with id=" + id
+        message: "Error updating Matkul with id=" + id
       });
     });
 };
-// Delete a Jurusan with the specified id in the request
+// Delete a Matkul with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Jurusan.destroy({
+  Matkul.destroy({
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Jurusan was deleted successfully!"
+          message: "Matkul was deleted successfully!"
         });
       } else {
         res.send({
-          message: `Cannot delete Jurusan with id=${id}. Maybe Jurusan was not found!`
+          message: `Cannot delete Matkul with id=${id}. Maybe Matkul was not found!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Jurusan with id=" + id
+        message: "Could not delete Matkul with id=" + id
       });
     });
 };
-// Delete all Jurusan from the database.
+// Delete all Matkul from the database.
 exports.deleteAll = (req, res) => {
-  Jurusan.destroy({
+  Matkul.destroy({
     where: {},
     truncate: false
   })
     .then(nums => {
-      res.send({ message: `${nums} Jurusan were deleted successfully!` });
+      res.send({ message: `${nums} Matkul were deleted successfully!` });
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all jurusan."
+          err.message || "Some error occurred while removing all matkul."
       });
     });
 };

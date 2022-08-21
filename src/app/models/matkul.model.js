@@ -1,14 +1,14 @@
 module.exports = (sequelize, Sequelize) => {
-  const Jurusan = sequelize.define("jurusan", {
-    kode_jurusan: {
+  const Matkul = sequelize.define("matkul", {
+    kode_matkul: {
       type: Sequelize.BIGINT
     },
-    nama_jurusan: {
+    nama_matkul: {
       type: Sequelize.STRING
     },
-    jenjang_jurusan: {
+    sks_matkul: {
       type: Sequelize.STRING
     }
   });
-  return Jurusan;
+  return Matkul;
 };
