@@ -13,8 +13,8 @@ exports.create = (req, res) => {
   // Create a Matkul
   const matkul = {
     kode_matkul: req.body.kode_matkul,
-    nama_jurusan: req.body.nama_jurusan,
-    jenjang_jurusan: req.body.jenjang_jurusan
+    nama_matkul: req.body.nama_matkul,
+    sks_matkul: req.body.sks_matkul
   };
   // Save Matkul in the database
   Matkul.create(matkul)
