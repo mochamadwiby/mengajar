@@ -1,17 +1,17 @@
 module.exports = app => {
   const mahasiswa = require("../controllers/mahasiswa.controller.js");
   var router = require("express").Router();
-  // Create a new Tutorial
+  // Create a new Mahasiswa
   router.post("/", mahasiswa.create);
-  // Retrieve all Tutorials
+  // Retrieve all Mahasiswa
   router.get("/", mahasiswa.findAll);
-  // Retrieve a single Tutorial with id
+  // Retrieve a single Mahasiswa with id
   router.get("/:id", mahasiswa.findOne);
-  // Update a Tutorial with id
+  // Update a Mahasiswa with id
   router.put("/:id", mahasiswa.update);
-  // Delete a Tutorial with id
+  // Delete a Mahasiswa with id
   router.delete("/:id", mahasiswa.delete);
-  // Delete all Tutorials
+  // Delete all Mahasiswa
   router.delete("/", mahasiswa.deleteAll);
   app.use('/api/mahasiswa', router);
 };

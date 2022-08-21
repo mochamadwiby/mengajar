@@ -43,30 +43,30 @@ exports.findAll = (req, res) => {
       });
     });
 };
-// Find a single Mahasiswa with an nim_mahasiswa
+// Find a single Mahasiswa with an id
 exports.findOne = (req, res) => {
-  const nim_mahasiswa = req.params.nim_mahasiswa;
-  Mahasiswa.findByPk(nim_mahasiswa)
+  const id = req.params.id;
+  Mahasiswa.findByPk(id)
     .then(data => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Mahasiswa with nim=${nim_mahasiswa}.`
+          message: `Cannot find Mahasiswa with id=${id}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Mahasiswa with nim=" + nim_mahasiswa
+        message: "Error retrieving Mahasiswa with id=" + id
       });
     });
 };
-// Update a Mahasiswa by the nim in the request
+// Update a Mahasiswa by the id in the request
 exports.update = (req, res) => {
-  const nim_mahasiswa = req.params.nim_mahasiswa;
+  const id = req.params.id;
   Mahasiswa.update(req.body, {
-    where: { nim_mahasiswa: nim_mahasiswa }
+    where: { id: id }
   })
     .then(num => {
       if (num == 1) {
@@ -75,21 +75,21 @@ exports.update = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot update Mahasiswa with nim=${nim_mahasiswa}. Maybe Mahasiswa was not found or req.body is empty!`
+          message: `Cannot update Mahasiswa with id=${id}. Maybe Mahasiswa was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Mahasiswa with nim=" + nim_mahasiswa
+        message: "Error updating Mahasiswa with id=" + id
       });
     });
 };
-// Delete a Mahasiswa with the specified nim in the request
+// Delete a Mahasiswa with the specified id in the request
 exports.delete = (req, res) => {
-  const nim_mahasiswa = req.params.nim_mahasiswa;
+  const id = req.params.id;
   Mahasiswa.destroy({
-    where: { nim_mahasiswa: nim_mahasiswa }
+    where: { id: id }
   })
     .then(num => {
       if (num == 1) {
@@ -98,13 +98,13 @@ exports.delete = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot delete Mahasiswa with nim=${inim_mahasiswad}. Maybe Mahasiswa was not found!`
+          message: `Cannot delete Mahasiswa with id=${id}. Maybe Mahasiswa was not found!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Mahasiswa with nim=" + nim_mahasiswa
+        message: "Could not delete Mahasiswa with id=" + id
       });
     });
 };
