@@ -1,126 +1,126 @@
 const db = require("../models");
-const Dosen = db.dosen;
+const Jurusan = db.jurusan;
 const Op = db.Sequelize.Op;
-// Create and Save a new Dosen
+// Create and Save a new Jurusan
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.nip_dosen) {
+  if (!req.body.kode_jurusan) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
     return;
   }
-  // Create a Dosen
-  const dosen = {
-    nip_dosen: req.body.nip_dosen,
-    nama_dosen: req.body.nama_dosen,
-    alamat_dosen: req.body.alamat_dosen
+  // Create a Jurusan
+  const jurusan = {
+    kode_jurusan: req.body.kode_jurusan,
+    nama_jurusan: req.body.nama_jurusan,
+    jenjang_jurusan: req.body.jenjang_jurusan
   };
-  // Save Dosen in the database
-  Dosen.create(dosen)
+  // Save Jurusan in the database
+  Jurusan.create(jurusan)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Dosen."
+          err.message || "Some error occurred while creating the Jurusan."
       });
     });
 };
-// Retrieve all Dosen from the database.
+// Retrieve all Jurusan from the database.
 exports.findAll = (req, res) => {
-  const nip_dosen = req.query.nip_dosen;
-  var condition = nip_dosen ? { nip_dosen: { [Op.like]: `%${nip_dosen}%` } } : null;
-  Dosen.findAll({ where: condition })
+  const kode_jurusan = req.query.kode_jurusan;
+  var condition = kode_jurusan ? { kode_jurusan: { [Op.like]: `%${kode_jurusan}%` } } : null;
+  Jurusan.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving dosen."
+          err.message || "Some error occurred while retrieving jurusan."
       });
     });
 };
-// Find a single Dosen with an id
+// Find a single Jurusan with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Dosen.findByPk(id)
+  Jurusan.findByPk(id)
     .then(data => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Dosen with id=${id}.`
+          message: `Cannot find Jurusan with id=${id}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Dosen with id=" + id
+        message: "Error retrieving Jurusan with id=" + id
       });
     });
 };
-// Update a Dosen by the id in the request
+// Update a Jurusan by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
-  Dosen.update(req.body, {
+  Jurusan.update(req.body, {
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Dosen was updated successfully."
+          message: "Jurusan was updated successfully."
         });
       } else {
         res.send({
-          message: `Cannot update Dosen with id=${id}. Maybe Dosen was not found or req.body is empty!`
+          message: `Cannot update Jurusan with id=${id}. Maybe Jurusan was not found or req.body is empty!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Dosen with id=" + id
+        message: "Error updating Jurusan with id=" + id
       });
     });
 };
-// Delete a Dosen with the specified id in the request
+// Delete a Jurusan with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
-  Dosen.destroy({
+  Jurusan.destroy({
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Dosen was deleted successfully!"
+          message: "Jurusan was deleted successfully!"
         });
       } else {
         res.send({
-          message: `Cannot delete Dosen with id=${id}. Maybe Dosen was not found!`
+          message: `Cannot delete Jurusan with id=${id}. Maybe Jurusan was not found!`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Dosen with id=" + id
+        message: "Could not delete Jurusan with id=" + id
       });
     });
 };
-// Delete all Dosen from the database.
+// Delete all Jurusan from the database.
 exports.deleteAll = (req, res) => {
-  Dosen.destroy({
+  Jurusan.destroy({
     where: {},
     truncate: false
   })
     .then(nums => {
-      res.send({ message: `${nums} Dosen were deleted successfully!` });
+      res.send({ message: `${nums} Jurusan were deleted successfully!` });
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all dosen."
+          err.message || "Some error occurred while removing all jurusan."
       });
     });
 };
