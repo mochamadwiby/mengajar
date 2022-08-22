@@ -28,12 +28,23 @@ npm install
 npm run test
 ```
 
+## Run start-dev
+
+```sh
+npm run start-dev
+```
+
+## Run start-prod
+
+```sh
+npm run start-prod
+```
+
 ## Author
 
 👤 **Mochamad Wiby Erton Firmanda**
 
-* Website: https://mochamadwiby.my.id
-* Github: [@mochamadwiby](https://github.com/mochamadwiby)
+- Github: [@mochamadwiby](https://github.com/mochamadwiby)
 
 ## 🤝 Contributing
 
@@ -47,6 +58,3 @@ Give a ⭐️ if this project helped you!
 
 Copyright © 2022 [Mochamad Wiby Erton Firmanda](https://github.com/mochamadwiby).<br />
 This project is [ISC](https://github.com/mochamadwiby/mengajar/blob/master/LICENSE) licensed.
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
