@@ -19,12 +19,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // simple route
 app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to erton application.' });
+  res.json({ message: 'Welcome to maserton application.' });
 });
 require("./app/routes/tutorial.routes")(app);
 require("./app/routes/mahasiswa.routes")(app);
 require("./app/routes/dosen.routes")(app);
 require("./app/routes/jurusan.routes")(app);
+require("./app/routes/matkul.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
