@@ -8,6 +8,9 @@ module.exports = (sequelize, Sequelize) => {
     },
     alamat_dosen: {
       type: Sequelize.STRING
+    },
+    status_dosen: {
+      type: Sequelize.TINYINT
     }
   });
   return Dosen;

@@ -14,7 +14,8 @@ exports.create = (req, res) => {
   const dosen = {
     nip_dosen: req.body.nip_dosen,
     nama_dosen: req.body.nama_dosen,
-    alamat_dosen: req.body.alamat_dosen
+    alamat_dosen: req.body.alamat_dosen,
+    status_dosen: req.body.status_dosen
   };
   // Save Dosen in the database
   Dosen.create(dosen)
