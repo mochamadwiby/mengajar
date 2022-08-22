@@ -21,7 +21,6 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to maserton application.' });
 });
-require("./app/routes/tutorial.routes")(app);
 require("./app/routes/mahasiswa.routes")(app);
 require("./app/routes/dosen.routes")(app);
 require("./app/routes/jurusan.routes")(app);
